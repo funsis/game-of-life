@@ -1,9 +1,10 @@
 import React from "react";
+import Header from "../Header/Header";
 
 const App = () => {
   return (
     <div>
-     Game Of Life!
+     <Header />
     </div>
   );
 }
