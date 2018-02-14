@@ -11,7 +11,13 @@
     color: #ddd;
   }
 
-  &__content a:hover {
+  &__content a {
+    color: #5791ed;
     text-decoration: none;
+
+    &:hover {
+      color: #3b5c91;
+      text-decoration: none;
+    }
   }
 }
