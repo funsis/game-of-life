@@ -1,9 +1,9 @@
 import React from "react";
-import "./Footer.css"
+import "./Footer.css";
 
 const Footer = () => (
-  <footer class="footer">
-    <div class="footer__content">
+  <footer className="footer">
+    <div className="footer__content">
       Created by <a href="https://github.com/funsis">Funsis</a>
     </div>
   </footer>
