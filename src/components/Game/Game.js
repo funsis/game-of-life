@@ -1,11 +1,11 @@
 import React from "react";
+import "./Game.css"
 
 const Game = () => (
-  <div className="game">
-    <div>Game Control</div>
-    <div>Board</div>
-    <div>Board Setings</div>
-  </div>
+  <body className="game">
+    <div className="game__content">
+    </div>
+  </body>
 );
 
 export default Game;

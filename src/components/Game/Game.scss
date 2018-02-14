@@ -1,0 +1,12 @@
+.game {
+  display: flex;
+  justify-content: space-around;
+  min-height: calc(100vh - 70px);
+  background: radial-gradient(ellipse at center, rgba(169,3,41,1) 0%,rgba(22,0,5,1) 100%);
+
+  &__content {
+    min-width: 650px;
+    min-height: 800px;
+    border: 2px solid white;
+  }
+}
