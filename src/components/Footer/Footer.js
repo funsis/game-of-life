@@ -1,10 +1,10 @@
 import React from "react";
+import "./Footer.css"
 
 const Footer = () => (
   <footer class="footer">
     <div class="footer__content">
-      Feel free to add cells while it's running. The cells in light red are
-      younger, dark red are older. Enjoy!
+      Created by <a href="https://github.com/funsis">Funsis</a>
     </div>
   </footer>
 );
