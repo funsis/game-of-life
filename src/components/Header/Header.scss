@@ -3,4 +3,16 @@
   height: 40px;
   padding: 5px;
   background-color: #333;
+  text-align: center;
+
+  &__link {
+    font-size: 30px;
+    line-height: 30px;
+    color: #ddd;
+
+    &:hover {
+      text-decoration: none;
+      color: #ddd;
+    }
+  }
 }
