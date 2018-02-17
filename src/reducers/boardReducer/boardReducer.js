@@ -1,6 +1,6 @@
 import { CREATE_BOARD } from "../../actions/types";
 
-const boardReducer = (state = [], action) => {
+const boardReducer = (state = {}, action) => {
   switch(action.type) {
     case CREATE_BOARD:
       return action.payload;

@@ -5,7 +5,11 @@ describe("ACTIONS:", () => {
     it("actionCreator createBoard", () => {
       const expected = {
         type: CREATE_BOARD,
-        payload: [[0, 0], [0, 0]]
+        payload: {
+          colSize: 2,
+          rowSize: 2,
+          cells: [[0, 0], [0, 0]]
+        }
       };
       const actual = createBoard(2, 2);
 

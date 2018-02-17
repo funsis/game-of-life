@@ -14,6 +14,10 @@ export const createBoard = (rows, cols) => {
 
   return {
     type: CREATE_BOARD,
-    payload: board
-  }
-}
+    payload: {
+      colSize: cols,
+      rowSize: rows,
+      cells: board
+    }
+  };
+};

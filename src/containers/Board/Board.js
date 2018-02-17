@@ -6,7 +6,9 @@ import "./Board.css";
 
 class Board extends Component {
   renderBoard = () => {
-    return this.props.board.map((row, rowId) =>
+    if (!this.props.board.cells) return;
+
+    return this.props.board.cells.map((row, rowId) =>
       row.map(
         (cell, colId) =>
           cell === 0 ? (
@@ -25,11 +27,16 @@ class Board extends Component {
   };
 
   componentWillMount() {
-    this.props.createBoard(50, 70);
+    this.props.createBoard(30, 55);
   }
 
   render() {
-    return <div className="board">{this.renderBoard()}</div>;
+    let gridSetings = {
+      gridTemplateRows: `repeat(${this.props.board.rowSize}, 12px)`,
+      gridTemplateColumns: `repeat(${this.props.board.colSize}, 12px)`
+    };
+
+    return <div className="board" style={gridSetings}>{this.renderBoard()}</div>;
   }
 }
 
