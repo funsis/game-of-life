@@ -5,6 +5,7 @@ import { Provider } from "react-redux";
 import reducers from "./reducers/index";
 import App  from "./components/App/App";
 import registerServiceWorker from "./registerServiceWorker";
+import "normalize.css";
 
 let store = createStore(reducers);
 
