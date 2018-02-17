@@ -1,4 +1,5 @@
 import React from "react";
+import "./Notice.css";
 
 const Notice = () => (
   <div className="notice">
@@ -6,3 +7,5 @@ const Notice = () => (
     in light red are younger, dark red are older. Enjoy!
   </div>
 );
+
+export default Notice;
