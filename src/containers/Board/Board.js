@@ -2,26 +2,25 @@ import React, { Component } from "react";
 import { bindActionCreators } from "redux";
 import { connect } from "react-redux";
 import { createBoard } from "../../actions/index";
+import "./Board.css";
 
 class Board extends Component {
-  renderTable = () => {
+  renderBoard = () => {
     return this.props.board.map((row, rowId) =>
-      <tr>
-        {row.map(
-          (cell, colId) =>
-            cell === 0 ? (
-              <td
-                key={`${rowId}${colId}`}
-                className="board__cell board__cell--dead"
-              />
-            ) : (
-              <td
-                key={`${rowId}${colId}`}
-                className="board__cell board__cell--alive"
-              />
-            )
-        )}
-      </tr>
+      row.map(
+        (cell, colId) =>
+          cell === 0 ? (
+            <div
+              key={rowId + colId}
+              className="board__cell board__cell--dead"
+            />
+          ) : (
+            <div
+              key={rowId + colId}
+              className="board__cell board__cell--alive"
+            />
+          )
+      )
     );
   };
 
@@ -30,11 +29,7 @@ class Board extends Component {
   }
 
   render() {
-    return (
-      <div className="board">
-        <table>{this.renderTable()}</table>
-      </div>
-    );
+    return <div className="board">{this.renderBoard()}</div>;
   }
 }
 

@@ -1,0 +1,22 @@
+.board {
+  display: flex;
+  justify-content: flex-start;
+  flex-wrap: wrap;
+  max-width: 840px;
+  min-width: 600px;
+  min-height: 390px;
+  border: 9px solid #333;
+  border-radius: 9px;
+  box-shadow: 0px 16px 30px 0px #200;
+
+  &__cell {
+    width: 11px;
+    height: 11px;
+    border-top: 1px solid #333;
+    border-left: 1px solid #333;
+
+    &--dead {
+      background-color: black;
+    }
+  }
+}
