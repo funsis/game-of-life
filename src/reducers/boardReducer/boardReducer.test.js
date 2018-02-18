@@ -41,5 +41,7 @@ describe("boardReducer:", () => {
       cellSize: 5,
       cells: [[0, 0], [0, 1]]
     }
+
+    expect(actual).toEqual(expected);
   });
 });
