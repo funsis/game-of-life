@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { bindActionCreators } from "redux";
 import { connect } from "react-redux";
-import { createBoard } from "../../actions/index";
+import { createBoard, changeCellState } from "../../actions/index";
 import "./Board.css";
 
 export class Board extends Component {
@@ -15,11 +15,13 @@ export class Board extends Component {
             <div
               key={rowId + colId}
               className="board__cell board__cell--dead"
+              onClick={() => this.props.changeCellState(rowId, colId)}
             />
           ) : (
             <div
               key={rowId + colId}
               className="board__cell board__cell--alive"
+              onClick={() => this.props.changeCellState(rowId, colId)}
             />
           )
       )
@@ -43,6 +45,6 @@ export class Board extends Component {
 const mapStateToProps = ({ board }) => ({ board });
 
 const mapDispatchToProps = dispatch =>
-  bindActionCreators({ createBoard }, dispatch);
+  bindActionCreators({ createBoard, changeCellState }, dispatch);
 
 export default connect(mapStateToProps, mapDispatchToProps)(Board);

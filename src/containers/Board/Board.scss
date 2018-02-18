@@ -12,5 +12,13 @@
     &--dead {
       background-color: black;
     }
+
+    &--alive {
+      background-color: #fbb;
+    }
+
+    &--alive-old {
+      background-color: #e44;
+    }
   }
 }
