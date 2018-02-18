@@ -32,6 +32,9 @@ const boardReducer = (state = {}, action) => {
 
         for (let i = rowId - 1; i <= rowId + 1; i++) {
           for (let j = colId - 1; j <= colId + 1; j++) {
+            //Исключаем проверяемый элемент
+            if (i === rowId && j === colId) continue;
+
             let posI = i;
             let posJ = j;
 
@@ -50,12 +53,14 @@ const boardReducer = (state = {}, action) => {
 
       let nextGeneration = state.cells.map((row, rowId) =>
         row.map((cell, colId) => {
-          let neighbors = checkNeighbors(rowId, colId);
+          const neighbors = checkNeighbors(rowId, colId);
 
           if (neighbors < 2 || neighbors > 3) {
             return 0;
           } else {
-            return cell === 0 ? 1 : 2;
+            if (cell !== 0) return 2;
+
+            return neighbors === 3 ? 1 : 0;
           }
         })
       );
