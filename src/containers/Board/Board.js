@@ -4,7 +4,7 @@ import { connect } from "react-redux";
 import { createBoard } from "../../actions/index";
 import "./Board.css";
 
-class Board extends Component {
+export class Board extends Component {
   renderBoard = () => {
     if (!this.props.board.cells) return;
 

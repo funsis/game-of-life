@@ -1,19 +1,32 @@
-import { createBoard } from "./index";
-import { CREATE_BOARD } from "./types";
+import { createBoard, changeCellState } from "./index";
+import { CREATE_BOARD, CHANGE_CELL_STATE } from "./types";
 
 describe("ACTIONS:", () => {
-    it("actionCreator createBoard", () => {
-      const expected = {
-        type: CREATE_BOARD,
-        payload: {
-          width: 2,
-          height: 2,
-          cellSize: "15px",
-          cells: [[0, 0], [0, 0]]
-        }
-      };
-      const actual = createBoard(2, 2, "15px");
+  it("action creator createBoard", () => {
+    const expected = {
+      type: CREATE_BOARD,
+      payload: {
+        width: 2,
+        height: 2,
+        cellSize: "15px",
+        cells: [[0, 0], [0, 0]]
+      }
+    };
+    const actual = createBoard(2, 2, "15px");
 
-      expect(actual).toEqual(expected);
-    })
-})
+    expect(actual).toEqual(expected);
+  });
+
+  it("action creator CHANGE_CELL_STATE", () => {
+    const expected = {
+      type: CHANGE_CELL_STATE,
+      payload: {
+        rowId: 2,
+        colId: 2,
+      }
+    };
+    const actual = changeCellState(2, 2);
+
+    expect(actual).toEqual(expected);
+  });
+});

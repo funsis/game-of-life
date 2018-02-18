@@ -1,4 +1,7 @@
-import { CREATE_BOARD } from "./types";
+import {
+  CREATE_BOARD,
+  CHANGE_CELL_STATE
+ } from "./types";
 
 export const createBoard = (rows, cols, cellSize = "12px") => {
   let board = [];
@@ -22,3 +25,13 @@ export const createBoard = (rows, cols, cellSize = "12px") => {
     }
   };
 };
+
+export const changeCellState = (rowId, colId) => {
+  return {
+    type: CHANGE_CELL_STATE,
+    payload: {
+      rowId,
+      colId
+    }
+  }
+}

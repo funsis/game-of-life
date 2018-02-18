@@ -1,1 +1,2 @@
 export const CREATE_BOARD = "CREATE_BOARD";
+export const CHANGE_CELL_STATE = "CHANGE_CELL_STATE"
