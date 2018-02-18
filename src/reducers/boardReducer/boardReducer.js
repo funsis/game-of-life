@@ -1,4 +1,8 @@
-import { CREATE_BOARD, CHANGE_CELL_STATE } from "../../actions/types";
+import {
+  CREATE_BOARD,
+  CHANGE_CELL_STATE,
+  CHANGE_GENERATION
+} from "../../actions/types";
 
 const boardReducer = (state = {}, action) => {
   switch (action.type) {
@@ -19,8 +23,46 @@ const boardReducer = (state = {}, action) => {
         })
       );
 
-      return {...state, cells: newCells}
+      return { ...state, cells: newCells };
     }
+
+    case CHANGE_GENERATION: {
+      const checkNeighbors = (rowId, colId) => {
+        let neighbors = 0;
+
+        for (let i = rowId - 1; i <= rowId + 1; i++) {
+          for (let j = colId - 1; j <= colId + 1; j++) {
+            let posI = i;
+            let posJ = j;
+
+            //Проверка на крайние клетки поля
+            if (posI === -1) posI = state.cells.length - 1;
+            if (posJ === -1) posJ = state.cells[0].length - 1;
+            if (posI === state.cells.length) posI = 0;
+            if (posJ === state.cells[0].length) posJ = 0;
+
+            if (state.cells[posI][posJ] !== 0) neighbors += 1;
+          }
+        }
+
+        return neighbors;
+      };
+
+      let nextGeneration = state.cells.map((row, rowId) =>
+        row.map((cell, colId) => {
+          let neighbors = checkNeighbors(rowId, colId);
+
+          if (neighbors < 2 || neighbors > 3) {
+            return 0;
+          } else {
+            return cell === 0 ? 1 : 2;
+          }
+        })
+      );
+
+      return { ...state, cells: nextGeneration };
+    }
+
     default:
       return state;
   }
