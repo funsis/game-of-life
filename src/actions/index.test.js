@@ -6,12 +6,13 @@ describe("ACTIONS:", () => {
       const expected = {
         type: CREATE_BOARD,
         payload: {
-          colSize: 2,
-          rowSize: 2,
+          width: 2,
+          height: 2,
+          cellSize: "15px",
           cells: [[0, 0], [0, 0]]
         }
       };
-      const actual = createBoard(2, 2);
+      const actual = createBoard(2, 2, "15px");
 
       expect(actual).toEqual(expected);
     })

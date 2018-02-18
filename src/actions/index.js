@@ -1,6 +1,6 @@
 import { CREATE_BOARD } from "./types";
 
-export const createBoard = (rows, cols) => {
+export const createBoard = (rows, cols, cellSize = "12px") => {
   let board = [];
   let row = [];
 
@@ -15,8 +15,9 @@ export const createBoard = (rows, cols) => {
   return {
     type: CREATE_BOARD,
     payload: {
-      colSize: cols,
-      rowSize: rows,
+      width: cols,
+      height: rows,
+      cellSize: cellSize,
       cells: board
     }
   };

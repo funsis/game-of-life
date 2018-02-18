@@ -32,8 +32,8 @@ class Board extends Component {
 
   render() {
     let gridSetings = {
-      gridTemplateRows: `repeat(${this.props.board.rowSize}, 12px)`,
-      gridTemplateColumns: `repeat(${this.props.board.colSize}, 12px)`
+      gridTemplateRows: `repeat(${this.props.board.height}, ${this.props.board.cellSize})`,
+      gridTemplateColumns: `repeat(${this.props.board.width}, ${this.props.board.cellSize})`
     };
 
     return <div className="board" style={gridSetings}>{this.renderBoard()}</div>;
