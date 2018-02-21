@@ -8,7 +8,7 @@ import {
 } from "../../actions/index";
 import "./Board.css";
 
-export class Board extends Component {
+class Board extends Component {
   renderBoard = () => {
     if (!this.props.board.cells) return;
 
