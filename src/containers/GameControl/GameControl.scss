@@ -1,0 +1,29 @@
+.game-control {
+  display: flex;
+  align-items: center;
+  width: 550px;
+  padding: 0 10px;
+  padding-top: 10px;
+  margin: 0 auto;
+  background-color: #333;
+  border-radius: 15px 15px 0 0;
+
+  &__buttons {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    margin-right: 50px;
+    width: 250px;
+  }
+
+  &__button {
+    width: 140px;
+    margin-bottom: 10px;
+  }
+
+  &__generation {
+    display: inline-block;
+    font-size: 20px;
+    color: #ddd;
+  }
+}
