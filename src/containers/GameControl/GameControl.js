@@ -1,7 +1,11 @@
 import React, { Component } from "react";
 import { bindActionCreators } from "redux";
 import { connect } from "react-redux";
-import { changeGeneration } from "../../actions/index";
+import {
+  changeGeneration,
+  clearBoard,
+  randomizeBoard
+} from "../../actions/index";
 import Button from "../../components/Button/Button";
 import "./GameControl.css";
 
@@ -37,6 +41,23 @@ class GameControl extends Component {
     clearInterval(this.timerId);
   };
 
+  onRandomizeClick = () => {
+    this.setState({ activeButton: 4 });
+
+    this.props.clearBoard();
+    this.props.randomizeBoard();
+
+    console.log(this.timerId);
+
+    setTimeout(
+      () =>
+        this.timerId
+          ? this.setState({ activeButton: 1 })
+          : this.setState({ activeButton: 2 }),
+      2000
+    );
+  };
+
   render() {
     return (
       <div className="game-control">
@@ -61,6 +82,7 @@ class GameControl extends Component {
           <Button
             name="Randomize"
             active={this.state.activeButton === 4 ? true : false}
+            onClick={this.onRandomizeClick}
           />
         </div>
       </div>
@@ -69,6 +91,9 @@ class GameControl extends Component {
 }
 
 const mapDispatchToProps = dispatch =>
-  bindActionCreators({ changeGeneration }, dispatch);
+  bindActionCreators(
+    { changeGeneration, clearBoard, randomizeBoard },
+    dispatch
+  );
 
 export default connect(null, mapDispatchToProps)(GameControl);

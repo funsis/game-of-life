@@ -81,9 +81,8 @@ const boardReducer = (state = {}, action) => {
     case RANDOMIZE_BOARD: {
       const randomBoard = state.cells.map(row => (
         row.map(cell => {
-          const random = Math.random() - 0.5;
-
-          return random ? 1 : 0;
+          let random = Math.random() - 0.5;
+          return random > 0 ? 1 : 0;
         })
       ));
 
