@@ -2,7 +2,8 @@ import {
   CREATE_BOARD,
   CHANGE_CELL_STATE,
   CHANGE_GENERATION,
-  CLEAR_BOARD
+  CLEAR_BOARD,
+  RANDOMIZE_BOARD
 } from "./types";
 
 export const createBoard = (rows, cols, cellSize = "12px") => {
@@ -39,3 +40,5 @@ export const changeCellState = (rowId, colId) => ({
 export const changeGeneration = () => ({ type: CHANGE_GENERATION });
 
 export const clearBoard = () => ({ type: CLEAR_BOARD });
+
+export const randomizeBoard = () => ({ type: RANDOMIZE_BOARD });

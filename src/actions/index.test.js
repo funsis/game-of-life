@@ -1,5 +1,17 @@
-import { createBoard, changeCellState, changeGeneration, clearBoard } from "./index";
-import { CREATE_BOARD, CHANGE_CELL_STATE, CHANGE_GENERATION, CLEAR_BOARD } from "./types";
+import {
+  createBoard,
+  changeCellState,
+  changeGeneration,
+  clearBoard,
+  randomizeBoard
+} from "./index";
+import {
+  CREATE_BOARD,
+  CHANGE_CELL_STATE,
+  CHANGE_GENERATION,
+  CLEAR_BOARD,
+  RANDOMIZE_BOARD
+} from "./types";
 
 describe("ACTIONS:", () => {
   it("action creator createBoard", () => {
@@ -40,6 +52,13 @@ describe("ACTIONS:", () => {
   it("action creator CLEAR_BOARD", () => {
     const expected = { type: CLEAR_BOARD };
     const actual = clearBoard();
+
+    expect(actual).toEqual(expected);
+  });
+
+  it("action creator RANDOMIZE_BOARD", () => {
+    const expected = { type: RANDOMIZE_BOARD };
+    const actual = randomizeBoard();
 
     expect(actual).toEqual(expected);
   });
