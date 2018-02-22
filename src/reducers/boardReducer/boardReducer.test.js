@@ -2,7 +2,8 @@ import {
   CREATE_BOARD,
   CHANGE_CELL_STATE,
   CHANGE_GENERATION,
-  CLEAR_BOARD
+  CLEAR_BOARD,
+  RANDOMIZE_BOARD
 } from "../../actions/types";
 import boardReducer from "./boardReducer";
 
@@ -87,4 +88,17 @@ describe("boardReducer:", () => {
 
     const actual = boardReducer(state, { type: CLEAR_BOARD });
   });
+
+  it("reducer for RANDOMIZE_BOARD", () => {
+    const state = {
+      width: 4,
+      height: 3,
+      cellSize: "5px",
+      cells: [[0, 0, 0, 0], [0, 0, 0, 0], [0, 0, 0, 0]]
+    };
+
+    const actual = boardReducer(state, { type: RANDOMIZE_BOARD });
+
+    expect(actual).not.toEqual(state);
+  })
 });

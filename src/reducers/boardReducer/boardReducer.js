@@ -2,7 +2,8 @@ import {
   CREATE_BOARD,
   CHANGE_CELL_STATE,
   CHANGE_GENERATION,
-  CLEAR_BOARD
+  CLEAR_BOARD,
+  RANDOMIZE_BOARD
 } from "../../actions/types";
 
 const boardReducer = (state = {}, action) => {
@@ -75,6 +76,18 @@ const boardReducer = (state = {}, action) => {
       ));
 
       return { ...state, cells: clearedBoard };
+    }
+
+    case RANDOMIZE_BOARD: {
+      const randomBoard = state.cells.map(row => (
+        row.map(cell => {
+          const random = Math.random() - 0.5;
+
+          return random ? 1 : 0;
+        })
+      ));
+
+      return { ...state, cells: randomBoard };
     }
 
     default:
