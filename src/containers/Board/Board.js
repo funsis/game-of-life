@@ -1,11 +1,7 @@
 import React, { Component } from "react";
 import { bindActionCreators } from "redux";
 import { connect } from "react-redux";
-import {
-  createBoard,
-  changeCellState,
-  changeGeneration
-} from "../../actions/index";
+import { createBoard, changeCellState } from "../../actions/index";
 import "./Board.css";
 
 class Board extends Component {
@@ -47,10 +43,6 @@ class Board extends Component {
     this.props.createBoard(30, 55);
   }
 
-  componentDidMount() {
-    setInterval(this.props.changeGeneration, 5000);
-  }
-
   render() {
     let gridSetings = {
       gridTemplateRows: `repeat(${this.props.board.height}, ${
@@ -72,9 +64,6 @@ class Board extends Component {
 const mapStateToProps = ({ board }) => ({ board });
 
 const mapDispatchToProps = dispatch =>
-  bindActionCreators(
-    { createBoard, changeCellState, changeGeneration },
-    dispatch
-  );
+  bindActionCreators({ createBoard, changeCellState }, dispatch);
 
 export default connect(mapStateToProps, mapDispatchToProps)(Board);
