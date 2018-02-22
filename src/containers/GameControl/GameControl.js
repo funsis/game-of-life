@@ -11,7 +11,7 @@ class GameControl extends Component {
   render() {
     return <div className="game-contorl">
       <div className="game-control__generation">
-        <Button name="Start" />
+        <Button name="Start" active="true" />
         <Button name="Pause" />
         <Button name="Clear" />
         <Button name="Randomize" />
