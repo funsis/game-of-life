@@ -1,7 +1,8 @@
 import {
   CREATE_BOARD,
   CHANGE_CELL_STATE,
-  CHANGE_GENERATION
+  CHANGE_GENERATION,
+  CLEAR_BOARD
 } from "../../actions/types";
 
 const boardReducer = (state = {}, action) => {
@@ -66,6 +67,14 @@ const boardReducer = (state = {}, action) => {
       );
 
       return { ...state, cells: nextGeneration };
+    }
+
+    case CLEAR_BOARD: {
+      const clearedBoard = state.cells.map(row => (
+        row.map(cell => 0)
+      ));
+
+      return { ...state, cells: clearedBoard };
     }
 
     default:

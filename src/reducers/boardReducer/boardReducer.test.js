@@ -1,7 +1,8 @@
 import {
   CREATE_BOARD,
   CHANGE_CELL_STATE,
-  CHANGE_GENERATION
+  CHANGE_GENERATION,
+  CLEAR_BOARD
 } from "../../actions/types";
 import boardReducer from "./boardReducer";
 
@@ -67,5 +68,23 @@ describe("boardReducer:", () => {
     };
 
     expect(actual).toEqual(expected);
+  });
+
+  it("reducer for CLEAR_BOARD", () => {
+    const state = {
+      width: 2,
+      height: 2,
+      cellSize: "5px",
+      cells: [[1, 1], [1, 1]]
+    };
+
+    const expected = {
+      width: 2,
+      height: 2,
+      cellSize: "5px",
+      cells: [[0, 0], [0, 0]]
+    };
+
+    const actual = boardReducer(state, { type: CLEAR_BOARD });
   });
 });
