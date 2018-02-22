@@ -1,4 +1,9 @@
-import { CREATE_BOARD, CHANGE_CELL_STATE, CHANGE_GENERATION } from "./types";
+import {
+  CREATE_BOARD,
+  CHANGE_CELL_STATE,
+  CHANGE_GENERATION,
+  CLEAR_BOARD
+} from "./types";
 
 export const createBoard = (rows, cols, cellSize = "12px") => {
   let board = [];
@@ -32,3 +37,5 @@ export const changeCellState = (rowId, colId) => ({
 });
 
 export const changeGeneration = () => ({ type: CHANGE_GENERATION });
+
+export const clearBoard = () => ({ type: CLEAR_BOARD });

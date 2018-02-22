@@ -1,5 +1,5 @@
-import { createBoard, changeCellState, changeGeneration } from "./index";
-import { CREATE_BOARD, CHANGE_CELL_STATE, CHANGE_GENERATION } from "./types";
+import { createBoard, changeCellState, changeGeneration, clearBoard } from "./index";
+import { CREATE_BOARD, CHANGE_CELL_STATE, CHANGE_GENERATION, CLEAR_BOARD } from "./types";
 
 describe("ACTIONS:", () => {
   it("action creator createBoard", () => {
@@ -33,6 +33,13 @@ describe("ACTIONS:", () => {
   it("action creator CHANGE_GENERATION", () => {
     const expected = { type: CHANGE_GENERATION };
     const actual = changeGeneration();
+
+    expect(actual).toEqual(expected);
+  });
+
+  it("action creator CLEAR_BOARD", () => {
+    const expected = { type: CLEAR_BOARD };
+    const actual = clearBoard();
 
     expect(actual).toEqual(expected);
   });
