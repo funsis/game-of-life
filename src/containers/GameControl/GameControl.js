@@ -45,27 +45,24 @@ class GameControl extends Component {
     this.setState({ generation: 0, activeButton: 3 });
 
     clearInterval(this.timerId);
+    clearTimeout(this.timeoutId);
 
     this.props.clearBoard();
 
-    setTimeout(() => this.setState({ activeButton: 2 }), 1000);
-  }
+    this.timeoutId = setTimeout(() => this.setState({ activeButton: 2 }), 1000);
+  };
 
   onRandomizeClick = () => {
+
     this.setState({ generation: 0, activeButton: 4 });
+
+    clearInterval(this.timerId);
+    clearTimeout(this.timeoutId);
 
     this.props.clearBoard();
     this.props.randomizeBoard();
 
-    console.log(this.timerId);
-
-    setTimeout(
-      () =>
-        this.timerId
-          ? this.setState({ activeButton: 1 })
-          : this.setState({ activeButton: 2 }),
-      1000
-    );
+    this.timeoutId = setTimeout(() => this.setState({ activeButton: 2 }), 1000);
   };
 
   render() {
