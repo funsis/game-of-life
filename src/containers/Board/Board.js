@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { bindActionCreators } from "redux";
 import { connect } from "react-redux";
-import { createBoard, changeCellState } from "../../actions/index";
+import { createBoard, changeCellState, randomizeBoard } from "../../actions/index";
 import "./Board.css";
 
 class Board extends Component {
@@ -41,6 +41,7 @@ class Board extends Component {
 
   componentWillMount() {
     this.props.createBoard(30, 55);
+    this.props.randomizeBoard();
   }
 
   render() {
@@ -64,6 +65,6 @@ class Board extends Component {
 const mapStateToProps = ({ board }) => ({ board });
 
 const mapDispatchToProps = dispatch =>
-  bindActionCreators({ createBoard, changeCellState }, dispatch);
+  bindActionCreators({ createBoard, changeCellState, randomizeBoard }, dispatch);
 
 export default connect(mapStateToProps, mapDispatchToProps)(Board);

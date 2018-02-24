@@ -42,7 +42,7 @@ class GameControl extends Component {
   };
 
   onRandomizeClick = () => {
-    this.setState({ activeButton: 4 });
+    this.setState({ generation: 0, activeButton: 4 });
 
     this.props.clearBoard();
     this.props.randomizeBoard();
@@ -54,7 +54,7 @@ class GameControl extends Component {
         this.timerId
           ? this.setState({ activeButton: 1 })
           : this.setState({ activeButton: 2 }),
-      2000
+      1000
     );
   };
 
