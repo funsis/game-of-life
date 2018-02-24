@@ -41,6 +41,16 @@ class GameControl extends Component {
     clearInterval(this.timerId);
   };
 
+  onClearClick = () => {
+    this.setState({ generation: 0, activeButton: 3 });
+
+    clearInterval(this.timerId);
+
+    this.props.clearBoard();
+
+    setTimeout(() => this.setState({ activeButton: 2 }), 1000);
+  }
+
   onRandomizeClick = () => {
     this.setState({ generation: 0, activeButton: 4 });
 
@@ -78,6 +88,7 @@ class GameControl extends Component {
           <Button
             name="Clear"
             active={this.state.activeButton === 3 ? true : false}
+            onClick={this.onClearClick}
           />
           <Button
             name="Randomize"
