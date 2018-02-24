@@ -20,7 +20,39 @@ class GameControl extends Component {
     this.onStartClick();
   }
 
+  componentWillUnmount() {
+    clearInterval(this.timerId);
+  }
+
+  isCellsEmpty() {
+    const { cells } = this.props.board;
+
+    for (let i = 0; i < cells.length; i++) {
+      for (let j = 0; j < cells[i].length; j++) {
+        if (cells[i][j] === 1) return false;
+      }
+    }
+
+    return true;
+  }
+
   changeGeneration = () => {
+    if (this.isCellsEmpty()) {
+      //ставим на паузу
+      clearInterval(this.timerId);
+      //отменяем таймер для смены активной кнопки
+      clearTimeout(this.timeoutId);
+
+      this.setState({ activeButton: 3 });
+
+      this.timeoutId = setTimeout(
+        () => this.setState({ activeButton: 2 }),
+        500
+      );
+
+      return
+    }
+
     this.props.changeGeneration();
 
     this.setState(prevState => {
@@ -44,24 +76,29 @@ class GameControl extends Component {
   onClearClick = () => {
     this.setState({ generation: 0, activeButton: 3 });
 
+    //ставим на паузу
     clearInterval(this.timerId);
+    //отменяем таймер для смены активной кнопки
     clearTimeout(this.timeoutId);
 
     this.props.clearBoard();
 
+    //таймер, чтобы сменить активную кнопку
     this.timeoutId = setTimeout(() => this.setState({ activeButton: 2 }), 1000);
   };
 
   onRandomizeClick = () => {
-
     this.setState({ generation: 0, activeButton: 4 });
 
+    //ставим на паузу
     clearInterval(this.timerId);
+    //отменяем таймер для смены активной кнопки
     clearTimeout(this.timeoutId);
 
     this.props.clearBoard();
     this.props.randomizeBoard();
 
+    //таймер, чтобы сменить активную кнопку
     this.timeoutId = setTimeout(() => this.setState({ activeButton: 2 }), 1000);
   };
 
@@ -98,10 +135,12 @@ class GameControl extends Component {
   }
 }
 
+const mapStateToProps = ({ board }) => ({ board });
+
 const mapDispatchToProps = dispatch =>
   bindActionCreators(
     { changeGeneration, clearBoard, randomizeBoard },
     dispatch
   );
 
-export default connect(null, mapDispatchToProps)(GameControl);
+export default connect(mapStateToProps, mapDispatchToProps)(GameControl);
