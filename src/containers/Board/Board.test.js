@@ -5,12 +5,12 @@ import Board from "./Board";
 import {
   createBoard,
   changeCellState,
-  changeGeneration
+  randomizeBoard
 } from "../../actions/index";
 import {
   CREATE_BOARD,
   CHANGE_CELL_STATE,
-  CHANGE_GENERATION
+  RANDOMIZE_BOARD
 } from "../../actions/types";
 
 describe("BOARD CONTAINER:", ()=> {
@@ -35,12 +35,12 @@ describe("BOARD CONTAINER:", ()=> {
     let actions;
     store.dispatch(createBoard(20, 20));
     store.dispatch(changeCellState(0, 0));
-    store.dispatch(changeGeneration());
+    store.dispatch(randomizeBoard());
 
     actions = store.getActions();
 
     expect(actions[0].type).toEqual(CREATE_BOARD);
     expect(actions[1].type).toEqual(CHANGE_CELL_STATE);
-    expect(actions[2].type).toEqual(CHANGE_GENERATION);
+    expect(actions[2].type).toEqual(RANDOMIZE_BOARD);
   })
 });
