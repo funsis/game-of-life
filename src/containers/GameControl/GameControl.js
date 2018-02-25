@@ -24,7 +24,7 @@ class GameControl extends Component {
     clearInterval(this.timerId);
   }
 
-  isCellsEmpty() {
+  isGameOver() {
     const { cells } = this.props.board;
 
     for (let i = 0; i < cells.length; i++) {
@@ -37,7 +37,8 @@ class GameControl extends Component {
   }
 
   changeGeneration = () => {
-    if (this.isCellsEmpty()) {
+    //проверяем, что доска не пуста и не статична
+    if (this.isGameOver()) {
       //ставим на паузу
       clearInterval(this.timerId);
       //отменяем таймер для смены активной кнопки
@@ -46,11 +47,11 @@ class GameControl extends Component {
       this.setState({ activeButton: 3 });
 
       this.timeoutId = setTimeout(
-        () => this.setState({ activeButton: 2 }),
+        () => this.setState({ activeButton: 0 }),
         500
       );
 
-      return
+      return;
     }
 
     this.props.changeGeneration();
