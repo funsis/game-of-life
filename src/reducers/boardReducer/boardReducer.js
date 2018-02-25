@@ -47,6 +47,8 @@ const boardReducer = (state = {}, action) => {
             if (posJ === state.cells[0].length) posJ = 0;
 
             if (state.cells[posI][posJ] !== 0) neighbors += 1;
+
+            if (neighbors > 3) return neighbors; 
           }
         }
 

@@ -66,7 +66,7 @@ class GameControl extends Component {
 
     this.setState({ activeButton: 1 });
 
-    this.timerId = setInterval(this.changeGeneration, 500);
+    this.timerId = setInterval(this.changeGeneration, 100);
   };
 
   onPauseClick = () => {
