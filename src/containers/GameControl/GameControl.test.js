@@ -28,7 +28,7 @@ describe("GameControl container:", ()=> {
   });
 
   it("check prop matches with initial state", () => {
-    expect(container.prop).toEqual(initialState.board);
+    expect(container.prop("board")).toEqual(initialState.board);
   });
 
   it("check actions on dispatching", () => {
@@ -41,7 +41,7 @@ describe("GameControl container:", ()=> {
     actions = store.getActions()
 
     expect(actions[0].type).toEqual(CLEAR_BOARD);
-    expect(actions[0].type).toEqual(RANDOMIZE_BOARD);
-    expect(actions[0].type).toEqual(CHANGE_GENERATION);
+    expect(actions[1].type).toEqual(RANDOMIZE_BOARD);
+    expect(actions[2].type).toEqual(CHANGE_GENERATION);
   });
 });
